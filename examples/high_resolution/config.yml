@@ -115,6 +115,11 @@ compute_notebooks:
   # The first key (here infrastructure) is the name of the
   # notebook from nb_path_root, minus the .ipynb
 
+    infrastructure:
+      index:
+        parameter_groups:
+          none: {}
+
     atm:
       practice_notebook:
         parameter_groups:

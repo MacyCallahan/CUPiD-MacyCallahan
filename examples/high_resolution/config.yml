@@ -121,7 +121,7 @@ compute_notebooks:
           none: {}
 
     atm:
-      practice_notebook:
+      highres_atm:
         parameter_groups:
           none: {}
 

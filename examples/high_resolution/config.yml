@@ -123,7 +123,11 @@ compute_notebooks:
     atm:
       highres_atm:
         parameter_groups:
-          none: {}
+          none: 
+            regridded_output: False # it looks like output is already on f09 grid, didn't need to regrid time-series file
+            base_regridded_output: True
+            validation_path: 'examples/high_resolution/T'
+      
 
 
 

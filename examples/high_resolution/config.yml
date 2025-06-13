@@ -54,6 +54,7 @@ global_params:
 
 timeseries:
   num_procs: 8
+  ts_dir: /glade/derecho/scratch/mcallahan/archive/b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001/atm/proc/tseries
   ts_done: [False, False]
   overwrite_ts: [False, False]
   case_name: ['b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001.cam.h0.0001-01.nc', 'b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001.cam.h0.0002-12.nc']

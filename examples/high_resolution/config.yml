@@ -44,7 +44,7 @@ global_params:
   case_name: 'b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001'
   CESM_output_dir: /glade/derecho/scratch/mcallahan/archive
   start_date: '0001-01-01'
-  end_date: '0002-01-01'
+  end_date: '0003-01-01'
   obs_data_dir: '/glade/derecho/scratch/mcallahan/archive'
   lc_kwargs:
     threads_per_worker: 1

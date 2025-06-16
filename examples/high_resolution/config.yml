@@ -42,29 +42,26 @@ computation_config:
 
 global_params:
   case_name: 'b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001'
-  base_case_name: 'b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001'
   CESM_output_dir: /glade/derecho/scratch/mcallahan/archive
   start_date: '0001-01-01'
-  end_date: '0002-12-01'
-  base_start_date: '0001-01-01'
-  base_end_date: '0002-12-01'
+  end_date: '0002-01-01'
   obs_data_dir: '/glade/derecho/scratch/mcallahan/archive'
   lc_kwargs:
-    threads_per_worker: 
+    threads_per_worker: 1
 
 timeseries:
   num_procs: 8
   ts_dir: /glade/derecho/scratch/mcallahan/archive/b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001/atm/proc/tseries
-  ts_done: [False, False]
-  overwrite_ts: [False, False]
-  case_name: ['b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001', 'b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001']
+  ts_done: False
+  overwrite_ts: False
+  case_name: 'b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001'
 
   atm:
     vars: ['T']
     derive_vars: []
     hist_str: 'cam.h0'
-    start_years: [1,1]
-    end_years: [2,2]
+    start_years: 1
+    end_years: 2
     level: 'lev'
 
   # lnd:
@@ -125,7 +122,7 @@ compute_notebooks:
       highres_atm:
         parameter_groups:
           none: 
-            regridded_output: False # it looks like output is already on f09 grid, didn't need to regrid time-series file
+            regridded_output: False
             base_regridded_output: True
             # validation_path: 'examples/high_resolution'
       

@@ -123,6 +123,7 @@ compute_notebooks:
           none: 
             regridded_output: False
             base_regridded_output: True
+            grid_file: '/glade/derecho/scratch/mcallahan/archive/b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001/atm/proc/tseries/grid.nc'
             # validation_path: 'examples/high_resolution'
       
 

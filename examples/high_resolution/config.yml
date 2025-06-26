@@ -42,6 +42,7 @@ computation_config:
 
 global_params:
   case_name: 'b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001'
+  base_case_name: 'b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001'
   CESM_output_dir: /glade/derecho/scratch/mcallahan/archive
   start_date: '0001-01-01'
   end_date: '0003-01-01'
@@ -51,16 +52,16 @@ global_params:
 
 timeseries:
   num_procs: 8
-  ts_done: False
-  overwrite_ts: False
-  case_name: 'b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001'
+  ts_done: [False]
+  overwrite_ts: [False]
+  case_name: ['b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001']
 
   atm:
-    vars: ['T']
+    vars: ['T', 'TREFHT', 'U', 'V', 'PRECL']
     derive_vars: []
     hist_str: 'cam.h0'
-    start_years: 1
-    end_years: 2
+    start_years: [1, 1, 1, 1, 1]
+    end_years: [3, 3, 3, 3, 3]
     level: 'lev'
 
   # lnd:
@@ -118,14 +119,27 @@ compute_notebooks:
           none: {}
 
     atm:
+      link_to_ADF:
+        kernel_name: cupid-infrastructure
+        parameter_groups:
+          none:
+            adf_root: ../../examples/high_resolution/ADF_output
+            key_plots: ["Surface_Wind_Stress_ANN_LatLon_Vector_Mean.png", "PRECT_ANN_LatLon_Mean.png", "PS_DJF_SHPolar_Mean.png", "TaylorDiag_ANN_Special_Mean.png"]
+        external_tool:
+          tool_name: 'ADF'
+          vars: ['SST', 'TS', 'SWCF', 'LWCF', 'PRECT', 'TAUX', 'TAUY',  'TGCLDLWP']
+          plotting_scripts: []
+          analysis_scripts: ["amwg_table"]
+          base_regridded_output: True
+          regridded_output: True
       highres_atm:
         parameter_groups:
-          none: 
+          none:
             regridded_output: False
             base_regridded_output: True
-            grid_file: '/glade/derecho/scratch/mcallahan/archive/b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001/atm/proc/tseries/grid.nc'
+            grid_file: '/glade/derecho/scratch/mcallahan/archive/b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001/atm/proc/tseries/b.e13.B1850C5.ne120_t12.cesm-ihesp-hires1.0.46.HOSING.001.cam.h0.T.000101-000212.nc'
             # validation_path: 'examples/high_resolution'
-      
+
 
 
 
@@ -155,15 +169,16 @@ book_toc:
     - caption: Atmosphere
       chapters:
         - file: atm/highres_atm
+        - file: atm/link_to_ADF
 
-    
+
 
 #####################################
 # Keys for Jupyter Book _config.yml #
 #####################################
 book_config_keys:
 
-  title: CESM Key Metrics   # Title of your jupyter book
+  title: High Resolution   # Title of your jupyter book
 
   # Other keys can be added here, see https://jupyterbook.org/en/stable/customize/config.html
   ### for many more options
